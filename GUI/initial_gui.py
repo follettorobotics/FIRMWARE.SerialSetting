@@ -65,7 +65,7 @@ class InitialGUI:
         self.baudrate_label.grid(column=0, row=1)
 
         self.baudrate = tk.StringVar()
-        self.baudrate.set("9600")
+        self.baudrate.set("115200")
         self.baudrate_dropdown = tk.OptionMenu(self.window, self.baudrate, "9600", "19200", "38400", "57600", "115200")
         self.baudrate_dropdown.grid(column=1, row=1)
 
