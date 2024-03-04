@@ -1,5 +1,6 @@
-import serial
 import time
+
+import serial
 
 from loguru import logger
 
@@ -12,13 +13,15 @@ class SerialSetting:
     def connect(self, port, baudrate, timeout=1):
         try:
             self.serial_port = serial.Serial(port, baudrate, timeout=timeout)
-            self.serial_port.write(data='ping')
+            time.sleep(1)
+            self.serial_port.write(data=b'\x00')
             data = self.serial_port.readline()
+            data = data.decode('utf-8').strip()
 
-            if data == 'pong':
+            if data == 'success':
                 return True
 
-            return True
+            return False
 
         except Exception as e:
             logger.debug(f"{self.__class__.__name__} except occur as {e}")
