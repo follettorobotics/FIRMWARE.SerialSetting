@@ -20,7 +20,7 @@ class SerialSetting:
 
             if data == 'success':
                 return True
-
+            logger.debug(f"{self.__class__.__name__} serial connection failed")
             return False
 
         except Exception as e:
